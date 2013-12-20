@@ -237,7 +237,15 @@ import java.util.Collections;
 		if (classDepth == 1)
 			superMethodInvocations.add(line); 
 	}
-	private void setType(String type) { this.type = type; }
+	private void setType(String type) {
+		this.type = type;
+		if ("".equals(currentAnnotations)) {
+			annotations.put("", Collections.<String>emptyList());
+		} else {
+			annotations.put("", Arrays.asList(currentAnnotations.split("\\s+")));
+		}
+		currentAnnotations = "";
+	}
 	private void setSuper(String superName, int superLine, int superPos) {
 		this.superName = superName;
 		this.superLine = superLine;
