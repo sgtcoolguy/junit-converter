@@ -27,6 +27,7 @@ public class TestCaseClass
 	private final List<Integer> overrideAnnotationsLines = new ArrayList<Integer>();
 	private int suiteLine;
 	private int suiteEndLine;
+	private int typeLine;
 
 	/**
 	 * @param lines
@@ -186,5 +187,15 @@ public class TestCaseClass
 	public int getSuiteEndLine()
 	{
 		return this.suiteEndLine;
+	}
+
+	public void setTypeLine(int line)
+	{
+		this.typeLine = line;
+	}
+
+	public int getTypeLine()
+	{
+		return this.typeLine;
 	}
 }

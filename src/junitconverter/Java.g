@@ -184,6 +184,7 @@ import java.util.Collections;
 	private int lastTypeLine;
 	private int lastTypePos;
 	private String type;
+	private int typeLine;
 	private String superName;
 	private int superLine;
 	private int superPos;
@@ -205,6 +206,7 @@ import java.util.Collections;
 		}
 	}
 	public String getType() { return type; }
+	public int getTypeLine() { return typeLine; }
 	public Set<String> getMethods() { return new HashSet<String>(methods.keySet()); }
 	public Map<String, Integer> getMethodsWithLines() { return methods; }
 	private void addMethod(String method, int line) {
@@ -237,8 +239,9 @@ import java.util.Collections;
 		if (classDepth == 1)
 			superMethodInvocations.add(line); 
 	}
-	private void setType(String type) {
+	private void setType(String type, int line) {
 		this.type = type;
+		this.typeLine = line;
 		if ("".equals(currentAnnotations)) {
 			annotations.put("", Collections.<String>emptyList());
 		} else {
@@ -348,7 +351,7 @@ normalClassDeclaration
     :   'class' Identifier (typeParameters)? {
     			// We track the type we're in
     			if (classDepth == 1 && type == null) { 
-    				setType($Identifier.getText());
+    				setType($Identifier.getText(), $Identifier.getLine());
     			} 
     	  }
         ('extends' type { 

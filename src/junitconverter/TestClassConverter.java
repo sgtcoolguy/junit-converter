@@ -241,6 +241,7 @@ public class TestClassConverter
 			testCaseClass.setSuiteLine(suiteLine - 1, endLine);
 		}
 		testCaseClass.setExtendsLine(parser.getSuperLine());
+		testCaseClass.setExtendsLine(parser.getTypeLine());
 		testCaseClass.setOverrideAnnotationsLines(new LinkedList<Integer>(parser.getOverrideAnnotationsLines()));
 		testCaseClass.setSuperConstructorInvocations(new LinkedList<Integer>(parser.getSuperConstructorInvocations()));
 		testCaseClass.setSuperMethodInvocations(new LinkedList<Integer>(parser.getSuperMethodInvocations()));

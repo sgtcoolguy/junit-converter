@@ -43,7 +43,7 @@ public class SimpleCoderEditor implements CodeEditor
 			return;
 		}
 
-		String methodLine = testCaseClass.getLines().get(testCaseClass.getExtendsLine());
+		String methodLine = testCaseClass.getLines().get(testCaseClass.getTypeLine());
 		String indent = extractIndent(methodLine);
 		classWriter.insertLine(testCaseClass.getExtendsLine(), indent + "@" + annotation.getSimpleName() + "(" + value
 				+ ")");
